@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import View
 
 
-def base_page(request):
-    return render(request, template_name='common/base.html')
+class BasePageView(View):
+    def get(self, request):
+        return render(request, 'common/base.html')

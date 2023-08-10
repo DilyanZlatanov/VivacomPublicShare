@@ -1,0 +1,31 @@
+<!-- List of the products -->
+<h1>List of Company products</h1>
+<ul>
+    {% for product in products %}
+        <li>
+            <strong class="product-name" data-id="{{ product.id }}">{{ product.product_name }}</strong>
+            <p> class="product-description" style="display: none;">{{ product.description }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<!-- Script for showing Product Description -->
+
+<script>
+    const productNames = document.querySelectorAll('.product-name');
+
+    productNames.forEach(productName => {
+        productName.addEventListener('click', () => {
+            const productId = productName.getAttribute('data-id');
+            const description = document.querySelector(`.product-description[data-id="${productId}"]`);
+
+            if (description.style.display === 'none') {
+                description.style.display = 'block';
+            } else {
+                description.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<!-- End Script for showing Product Description -->
+<!-- End List of the products -->
