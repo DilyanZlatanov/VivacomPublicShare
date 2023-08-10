@@ -1,18 +1,69 @@
-<h1>This is Base Page</h1>
+{% load static %}
+<h1>Welcome to Vivacom web page</h1>
+<head>
+    <!-- Add this line in your HTML template's <head> section -->
+    <link rel="stylesheet" href="{% static 'css/background.css' %}">
+</head>
+<!-- Starts Header Section with Navigation Bar -->
+<body>
+<header>
+    <nav class="navbar">
+        <div class="container">
 
-<!-- Navigation Bar -->
+            <!-- Link to Home Page -->
+            <a class="home" href="{% url "base" %}"><i>Home</i></a>
+        </div>
+        <div class="nav-links">
+            <ul class="nav-group">
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <!-- Link to Login Page -->
+                        <a href="{% url 'login' %}"><i>Login</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to Register Page -->
+                        <a href="{% url 'register' %}"><i>Register</i></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <!-- Link to Profile Page -->
+                        <a href="{% url 'change-password' request.user.pk %}"><i>Change Password</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to Logout Page -->
+                        <a href="{% url 'logout' %}"><i>Logout</i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- End Header Section with Navigation Bar -->
 
-<!-- LoginView -->
-<ul>
-    <li><a href="{% url 'login' %}">Login</a> </li>
-</ul>
-<!-- End LoginView -->
+<!-- Main Section -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- End Main Section -->
 
+<!-- Footer section -->
+<div class="footer">
+    <!-- Customer Feedback -->
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url 'customer-feedback' %}"><i>Send Feedback</i></a></li>
+        </ul>
+    {% endif %}
+    <!-- End Customer Feedback -->
 
-<!-- LogoutView -->
-<ul>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-</ul>
-<!-- End LogoutView -->
-
-<!-- End Navigation Bar git -->
+    <!-- Create Product -->
+    {% if user.is_staff %}
+        <ul>
+            <li><a href="{% url 'create-product' %}"><i>Create Product</i></a></li>
+        </ul>
+    {% endif %}
+    <!-- End Create Product -->
+</div>
+<!-- End Footer section -->
+</body>

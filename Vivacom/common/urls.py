@@ -3,5 +3,5 @@ from django.urls import path
 from Vivacom.common import views
 
 urlpatterns = [
-    path('', views.base_page, name='base')
+    path('', views.BasePageView.as_view(), name='base')
 ]

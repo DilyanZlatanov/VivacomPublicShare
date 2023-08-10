@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-efq(ae+ys6*67$5qmws9mf-9!i!t%_dv*mxtu(93%v#&f_@y#-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'Vivacom.accounts',
     'Vivacom.common',
     'Vivacom.customer_feedback',
+    'Vivacom.company_products',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'base'
+LOGOUT_REDIRECT_URL = 'base'
+
+handler404 = 'Vivacom.views.custom_404_view'

@@ -1,7 +1,12 @@
+{% extends 'common/base.html' %}
 
+{% block content %}
 <!-- CustomerFeedbackForm -->
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="Submit"></button>
+    <button type="Submit">Send Feedback</button>
 </form>
+<!-- End CustomerFeedbackForm -->
+
+{% endblock %}

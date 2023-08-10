@@ -1,5 +1,6 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 
 from Vivacom.accounts.forms import UserRegistrationForm, UserLoginForm
@@ -27,3 +28,8 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     pass
+
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'accounts/change-password.html'
+    success_url = reverse_lazy('base')

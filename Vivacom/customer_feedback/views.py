@@ -14,6 +14,6 @@ class CustomerFeedbackView(View):
 
         if form.is_valid():
             form.save()
-            return redirect('base.html')
+            return redirect('base')
         else:
             return render(request, 'customer_feedback/feedback.html', {'form': form})
