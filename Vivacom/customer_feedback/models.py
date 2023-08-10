@@ -13,3 +13,4 @@ class CustomerFeedbackModel(models.Model):
         null=False,
     )
     publication_date = models.DateTimeField(auto_now_add=True)
+    is_reviewed = models.BooleanField(default=False)

@@ -6,4 +6,4 @@ from Vivacom.customer_feedback.models import CustomerFeedbackModel
 class CustomerFeedbackForm(forms.ModelForm):
     class Meta:
         model = CustomerFeedbackModel
-        fields = ['title', 'description']
+        fields = ['title', 'description', 'email_for_contact']
