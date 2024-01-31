@@ -4,7 +4,6 @@ This is a simple web application with functionallity for:
    - login
    - change password
    - every profile can send feedback to the server
-   - 
 2.Admins
    - some admins have full CRUD rights
    - some have only review rights
